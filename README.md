@@ -137,15 +137,27 @@ from the HardFault handler causes the processor to jump to the start of the Hard
 On hardware, these instructions make the processor sleep until an interrupt signal arrives (WFI) or
 until an event occurs (WFE).
 
-## Unresolved questions
+## How to exit QEMU cleanly?
 
-If you figure these out send a PR with the answer!
+Build with 'semihosting' feature.
+This will pull in the `cortex-m-semihosting` dependency and uses syscall to exit QEMU successfully
+```
+$ cargo build --features semihosting
+```
 
-- You can terminate QEMU from the terminal by entering Ctrl-A + X, but how can you terminate QEMU
-  from within the kernel program?
+Run without `-gdb` and `-S` (stop) option.
+```
+$ qemu-system-arm \
+       -cpu cortex-m3 \
+       -machine lm3s6965evb \
+       -semihosting \
+       -nographic \
+       -kernel target/thumbv7m-none-eabi/debug/lm3s6965evb
+x = 42
+$
+```
 
-- How to make the emulated program output text to the console? I would assume that configuring and
-  writing to the serial port of the LM3S6965 should work, but I haven't tried it myself.
+The above exits immediately.
 
 ## References
 
