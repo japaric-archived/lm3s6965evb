@@ -1,9 +1,11 @@
 [package]
 name = "lm3s6965evb"
 version = "0.1.0"
-authors = ["Jorge Aparicio <jorge@japaric.io>"]
+authors = ["Jorge Aparicio <jorge@japaric.io>", "Hideki Sekine <sekineh@me.com>"]
 
 [dependencies]
 cortex-m = "0.5.2"
 cortex-m-rt = "0.5.1"
 panic-abort = "0.2.0"
+cortex-m-semihosting = "0.3.1"
+unreachable = "1.0.0"
