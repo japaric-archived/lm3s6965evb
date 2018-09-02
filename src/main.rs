@@ -29,10 +29,10 @@ fn main() -> ! {
 
         #[cfg(feature = "semihosting")]
         unsafe {
-            // system call to exit QEMU
             let mut hstdout = semihosting::hio::hstdout().unwrap();
             write!(hstdout, "x = {}\n", x);
 
+            // system call to exit successfully
             semihosting::syscall1(
                 semihosting::nr::REPORT_EXCEPTION,
                 semihosting::debug::Exception::ApplicationExit as usize,
