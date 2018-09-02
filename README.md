@@ -137,27 +137,23 @@ from the HardFault handler causes the processor to jump to the start of the Hard
 On hardware, these instructions make the processor sleep until an interrupt signal arrives (WFI) or
 until an event occurs (WFE).
 
-## How to exit QEMU cleanly?
-
-Build with 'semihosting' feature.
-This will pull in the `cortex-m-semihosting` dependency and uses syscall to exit QEMU successfully
-```
-$ cargo build --features semihosting
-```
+## Just want to run on QEMU?
 
 Run without `-gdb` and `-S` (stop) option.
+Add `-semihosting-config enable=on,target=native` to enable semihosting console output and exit.
+
 ```
 $ qemu-system-arm \
        -cpu cortex-m3 \
        -machine lm3s6965evb \
-       -semihosting \
+       -semihosting-config enable=on,target=native \
        -nographic \
        -kernel target/thumbv7m-none-eabi/debug/lm3s6965evb
 x = 42
 $
 ```
 
-The above exits immediately.
+The command exits immediately.
 
 ## References
 
