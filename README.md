@@ -1,3 +1,16 @@
+# Status
+
+This repository is an old experiment and has been archived. The example in this
+repository has been upstream-ed to the [cortex-m-quickstart] template. The
+[embedded Rust book] covers how to run the example.
+
+[cortex-m-quickstart]: https://github.com/rust-embedded/cortex-m-quickstart
+[embedded Rust book]: https://docs.rust-embedded.org/book/
+
+-- @japaric, 2018-12-08
+
+---
+
 # `lm3s6965evb`
 
 > An example of running a [`cortex-m-rt`] program on a QEMUlated Cortex-M core
